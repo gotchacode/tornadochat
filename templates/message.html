@@ -1,1 +1,4 @@
-<div class="message" id="m{{ message["id"] }}">{% module linkify(message["body"]) %} by <span class="message-sender">{% module linkify(message["id"]) %}</span> </div>
+<div class="message" id="m{{ message["id"] }}">
+    User:{% module linkify(message["body"]) %} 
+    <br>
+    <span class="movie-name"></span>{% module linkify(message["secret_message"]["name"]) %}</span> by <span class="message-sender">{% module linkify(message["secret_message"]["director"]) %}</span> <span class="rating">{% module linkify(str(message["secret_message"]["99popularity"])) %}</span></div>

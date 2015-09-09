@@ -21,7 +21,7 @@ import tornado.ioloop
 import tornado.web
 import os.path
 import uuid
-
+import json
 
 from tornado.concurrent import Future
 from tornado import gen
@@ -73,11 +73,22 @@ class MainHandler(tornado.web.RequestHandler):
 
 
 class MessageNewHandler(tornado.web.RequestHandler):
+    def get_data(self):
+        jsonfile = open("imdb.json")
+        json_data = json.load(jsonfile)
+        return json_data, len(json_data)
+
     def post(self):
+        from random import randint
+        imdb_data, length = self.get_data()
+        random_int = randint(0, length) 
         message = {
             "id": str(uuid.uuid4()),
             "body": self.get_argument("body"),
+            "secret_message": imdb_data[random_int],
         }
+        
+
         print message
         message["html"] = tornado.escape.to_basestring(
             self.render_string("message.html", message=message))

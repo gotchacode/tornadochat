@@ -53,3 +53,11 @@ td {
 .message-sender {
   color: #000000;
 }
+
+.movie-name {
+  color: blueviolet
+}
+
+.rating {
+  color: aquamarine;
+}
