@@ -1,5 +1,5 @@
 import tornado.web
-from buffer import MessageBuffer
+from .buffer import MessageBuffer
 from tornado import gen
 
 global_message_buffer = MessageBuffer()
