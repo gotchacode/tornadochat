@@ -1,7 +1,7 @@
 import tornado.web
-from buffer import MessageBuffer
+from .buffer import MessageBuffer
 from tornado import gen
-
+from tornado.websocket import WebSocketHandler
 global_message_buffer = MessageBuffer()
 
 
@@ -19,3 +19,14 @@ class MessageUpdatesHandler(tornado.web.RequestHandler):
 
     def on_connection_close(self):
         global_message_buffer.cancel_wait(self.future)
+
+
+class EchoWebSocket(tornado.websocket.WebSocketHandler):
+    def open(self):
+        print("WebSocket opened")
+
+    def on_message(self, message):
+        self.write_message(u"You said: " + message)
+
+    def on_close(self):
+        print("WebSocket closed")

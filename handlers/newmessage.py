@@ -1,7 +1,7 @@
 import tornado.web
 import uuid
 import json
-from buffer import MessageBuffer
+from .buffer import MessageBuffer
 
 global_message_buffer = MessageBuffer()
 

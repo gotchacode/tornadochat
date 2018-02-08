@@ -25,6 +25,7 @@ def main():
         xsrf_cookies=False,
         debug=options.debug,
     )
+    print("Server running at http://localhost:8888")
     app.listen(options.port)
     tornado.ioloop.IOLoop.current().start()
 

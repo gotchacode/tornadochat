@@ -6,7 +6,11 @@ and their imdb rating when use chats with the server.
 
 ### How To Use It
 
-Just run `make runserver` and it will start running the server on http://localhost:8888
+```sh
+mkvirtualenv chat -p $(which pythpn3)
+pip install -r requirements.txt
+python server.py
+```
 
 ### Contact
 
